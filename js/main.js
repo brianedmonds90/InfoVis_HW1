@@ -92,18 +92,13 @@ canvas.selectAll(".dot")
    .attr("cy", function(d) { return y(d[yData]); })
    .style("fill", function(d) { return color(d.variety); })
        .on("mouseover", function(d) {
-           tooltip.transition()
-                .duration(200)
-                .style("opacity", .9);
-           tooltip.html("Variety: " + d["variety"] +
-"<br/> Compactness: " + d["compactness"] +
-"<br/> Kernel Length: " + d["kernelLength"] + " cm" +
-"<br/> Kernel Width: " + d["kernelWidth"] + " cm" +
-"<br/> Asymmetry Coefficient: " + d["asymmetryCoefficient"] +
-"<br/> Groove Length: " + d["grooveLength"] + " cm")
-                .style("left", d3.event.pageX + "px")
-                .style("top", d3.event.pageY + "px");
-       })
+       var details= "Compactness: " + d.compactness
+       +"<br/> Kernel Length: " + d.kernelLength + " cm"
+       +"<br/> Kernel Width: " + d.kernelWidth + " cm" +
+       "<br/> Asymmetry Coefficient: " + d.asymmetryCoefficient +
+       "<br/> Groove Length: " + d.grooveLength + " cm";
+          showDetails(details);
+})
        .on("mouseout", function(d) {
            tooltip.transition()
                 .duration(500)
